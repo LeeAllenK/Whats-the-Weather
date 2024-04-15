@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="css/style.css" />
+		<script src="https://kit.fontawesome.com/fa7b4f69c2.js" crossorigin="anonymous"></script>
+	</head>
+
+	<body style="background-image: url('img/sun.jpeg')">
+		<div class="app">
+			<input id="findCity" type="text" name="" value="" placeholder="Search for a City...">
+			<button id="button" type="button" name="button">Search</button>
+			<div id="main-info">
+				<h1 id="cityName">Milton</h1>
+				<h2 id="temp">74</h2>
+				<h2 id="weather">clouds</h2>
+
+				<div id="temps">
+					<h2 id="tempLo">L:71</h2>
+					&ensp;
+					<h2 id="tempHi">H:79</h2>
+				</div>
+			</div>
+			<div class="forecast">
+				<table>
+
+					<thead class="row-head">
+						<th scope="col"><i class="fa-solid fa-calendar-days"></i>&nbsp;5-day Forecast</th>
+
+					<tbody>
+						<tr class="row1">
+							<th class="monday" scope="row">monday</th>
+							<td class=""></td>
+							<td class="mHigh">Hi: 80</td>
+							<td class="mLow">Lo: 60</td>
+						</tr>
+
+						<tr class="row2">
+							<th class="tuesday" scope="row">tuesday</th>
+							<td class="tHigh">Hi: 80</td>
+							<td class="tLow">Lo: 60</td>
+						</tr>
+						<tr class="row2">
+							<th class="wednesday" scope="row">monday</th>
+							<td class="wHigh">Hi: 80</td>
+							<td class="wLow">Lo: 60</td>
+						</tr>
+						<tr class="row4">
+							<th class="thursday" scope="row">monday</th>
+							<td class="thHigh">Hi: 80</td>
+							<td class="thLow">Lo: 60</td>
+						</tr>
+						<tr class="row5">
+							<th class="friday" scope="row">monday</th>
+							<td class="fHigh">Hi: 80</td>
+							<td class="fLow">Lo: 60</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+
+</html>

@@ -40,7 +40,7 @@ async function setDefault() {
 		console.error(err);
 	}
 }
-setDefault();
+// setDefault();
 
 async function fiveDay() {
 
@@ -73,8 +73,6 @@ async function fiveDay() {
 		thursday.textContent = days[day4];
 		friday.textContent = days[day5];
 
-	
-		
 		mHigh.textContent = ` Hi: ${Math.ceil(((data.list[0].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 		tHigh.textContent = ` Hi: ${Math.ceil(((data.list[7].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 		wHigh.textContent = ` Hi: ${Math.ceil(((data.list[15].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
@@ -92,7 +90,7 @@ async function fiveDay() {
 		return err;
 	}
 }
-fiveDay();
+// fiveDay();
 
 async function getWeather() {
 
@@ -145,7 +143,12 @@ async function getWeather() {
 		thHigh.textContent = ` Hi: ${Math.ceil(((data2.list[23].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 		fHigh.textContent = ` Hi: ${Math.ceil(((data2.list[31].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 
-		weather.textContent = data2.list[0].weather[0].main
+		document.querySelector('.mWeather').textContent = data2.list[0].weather[0].description;
+		document.querySelector('.tWeather').textContent = data2.list[7].weather[0].description;
+		document.querySelector('.wWeather').textContent = data2.list[15].weather[0].description;
+		document.querySelector('.thWeather').textContent = data2.list[23].weather[0].description;
+		document.querySelector('.fWeather').textContent = data2.list[31].weather[0].description;
+		
 
 		mLow.textContent = ` Lo: ${Math.ceil(((data2.list[0].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
 		tLow.textContent = ` Lo: ${Math.ceil(((data2.list[7].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;

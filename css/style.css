@@ -11,7 +11,6 @@ body {
 	/* width: 100%; */
 	border-radius: 30px;
 	background-color: white;
-	opacity: .5;
 }
 
 #temp {
@@ -37,11 +36,8 @@ body {
 }
 
 tbody {
-	display: flex;
-	/* flex-direction: column;
-	align-items: center; */
-
-
+	 display: flex; 
+	flex-direction: row;
 	font-size: 30px;
 	font-weight: 1000;
 }
@@ -51,42 +47,23 @@ tbody {
 .row-head {
 	display: flex;
 	justify-content: center;
-	border-bottom-style: dotted;
-	border-color: black;
+	font-size: 30px;
 }
 
 
 tr{
 	display: flex;
 	flex-direction: column;
+	border: 1px solid black;
+	border-radius: 10px;
+	box-shadow: 10px 5px 5px blue;
 }
 
-.row1 {
-	/* border-bottom-style: dotted; */
-	border-color: black;
-	height: 25px;
+table{
+	display: flex;
+	justify-content: space-between;
 }
 
-.row2 {
-	/* border-bottom-style: dotted; */
-	border-color: black;
-	height: 25px;
-}
-
-.row3 {
-	/* border-bottom-style: dotted; */
-	border-color: black;
-	height: 25px;
-}
-
-.row4 {
-	/* border-bottom-style: dotted; */
-	border-color: black;
-	height: 25px;
-}
-
-.row5 {
-	border-bottom-style: dotted;
-	border-color: black;
-	height: 25px;
+th{
+	border-bottom: dotted;
 }

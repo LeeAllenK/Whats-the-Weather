@@ -30,11 +30,11 @@ async function setDefault() {
 		const res = await fetch(url);
 		const data = await res.json();
 
-		cityName.innerText = data.name;
-		temp.innerText = Math.ceil(((data.main.temp - 273.15) * 1.8) + 32) + '°';
-		tempHi.innerText = `H:${Math.ceil(((data.main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
-		tempLo.innerText = ` L: ${Math.ceil(((data.main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
-		weather.innerText = data.weather[0].main;
+		cityName.textContent = data.name;
+		temp.textContent = Math.ceil(((data.main.temp - 273.15) * 1.8) + 32) + '°';
+		tempHi.textContent = `H:${Math.ceil(((data.main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
+		tempLo.textContent = ` L: ${Math.ceil(((data.main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
+		weather.textContent = data.weather[0].main;
 
 	} catch(err) {
 		console.error(err);
@@ -67,27 +67,29 @@ async function fiveDay() {
 		const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 
-		monday.innerText = days[day1];
-		tuesday.innerText = days[day2];
-		wednesday.innerText = days[day3];
-		thursday.innerText = days[day4];
-		friday.innerText = days[day5];
+		monday.textContent = days[day1];
+		tuesday.textContent = days[day2];
+		wednesday.textContent = days[day3];
+		thursday.textContent = days[day4];
+		friday.textContent = days[day5];
 
-		mHigh.innerText = ` Hi: ${Math.ceil(((data.list[0].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
-		tHigh.innerText = ` Hi: ${Math.ceil(((data.list[7].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
-		wHigh.innerText = ` Hi: ${Math.ceil(((data.list[15].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
-		thHigh.innerText = ` Hi: ${Math.ceil(((data.list[23].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
-		fHigh.innerText = ` Hi: ${Math.ceil(((data.list[31].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
+	
+		
+		mHigh.textContent = ` Hi: ${Math.ceil(((data.list[0].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
+		tHigh.textContent = ` Hi: ${Math.ceil(((data.list[7].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
+		wHigh.textContent = ` Hi: ${Math.ceil(((data.list[15].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
+		thHigh.textContent = ` Hi: ${Math.ceil(((data.list[23].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
+		fHigh.textContent = ` Hi: ${Math.ceil(((data.list[31].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 
-		mLow.innerText = ` Lo: ${Math.ceil(((data.list[0].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
-		tLow.innerText = ` Lo: ${Math.ceil(((data.list[7].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
-		wLow.innerText = ` Lo: ${Math.ceil(((data.list[15].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
-		thLow.innerText = ` Lo: ${Math.ceil(((data.list[23].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
-		fLow.innerText = ` Lo: ${Math.ceil(((data.list[31].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
+		mLow.textContent = ` Lo: ${Math.ceil(((data.list[0].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
+		tLow.textContent = ` Lo: ${Math.ceil(((data.list[7].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
+		wLow.textContent = ` Lo: ${Math.ceil(((data.list[15].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
+		thLow.textContent = ` Lo: ${Math.ceil(((data.list[23].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
+		fLow.textContent = ` Lo: ${Math.ceil(((data.list[31].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
 
 
 	} catch(err) {
-		console.error(err);
+		return err;
 	}
 }
 fiveDay();
@@ -111,11 +113,11 @@ async function getWeather() {
 
 		console.log(data);
 		console.log('data2:', data2)
-		cityName.innerText = data.name;
-		temp.innerText = Math.ceil(((data.main.temp - 273.15) * 1.8) + 32) + '°';
-		tempHi.innerText = `H:${Math.ceil(((data.main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
-		tempLo.innerText = ` L: ${Math.ceil(((data.main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
-		weather.innerText = data.weather[0].main;
+		cityName.textContent = data.name;
+		temp.textContent = Math.ceil(((data.main.temp - 273.15) * 1.8) + 32) + '°';
+		tempHi.textContent = `H:${Math.ceil(((data.main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
+		tempLo.textContent = ` L: ${Math.ceil(((data.main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
+		weather.textContent = data.weather[0].main;
 
 
 		const mon = new Date(data2.list[0].dt_txt);
@@ -131,26 +133,28 @@ async function getWeather() {
 		const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 
-		monday.innerText = days[day1];
-		tuesday.innerText = days[day2];
-		wednesday.innerText = days[day3];
-		thursday.innerText = days[day4];
-		friday.innerText = days[day5];
+		monday.textContent = days[day1];
+		tuesday.textContent = days[day2];
+		wednesday.textContent = days[day3];
+		thursday.textContent = days[day4];
+		friday.textContent = days[day5];
 
-		mHigh.innerText = ` Hi: ${Math.ceil(((data2.list[0].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
-		tHigh.innerText = ` Hi: ${Math.ceil(((data2.list[7].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
-		wHigh.innerText = ` Hi: ${Math.ceil(((data2.list[15].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
-		thHigh.innerText = ` Hi: ${Math.ceil(((data2.list[23].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
-		fHigh.innerText = ` Hi: ${Math.ceil(((data2.list[31].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
+		mHigh.textContent = ` Hi: ${Math.ceil(((data2.list[0].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
+		tHigh.textContent = ` Hi: ${Math.ceil(((data2.list[7].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
+		wHigh.textContent = ` Hi: ${Math.ceil(((data2.list[15].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
+		thHigh.textContent = ` Hi: ${Math.ceil(((data2.list[23].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
+		fHigh.textContent = ` Hi: ${Math.ceil(((data2.list[31].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 
-		mLow.innerText = ` Lo: ${Math.ceil(((data2.list[0].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
-		tLow.innerText = ` Lo: ${Math.ceil(((data2.list[7].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
-		wLow.innerText = ` Lo: ${Math.ceil(((data2.list[15].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
-		thLow.innerText = ` Lo: ${Math.ceil(((data2.list[23].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
-		fLow.innerText = ` Lo: ${Math.ceil(((data2.list[31].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
+		weather.textContent = data2.list[0].weather[0].main
+
+		mLow.textContent = ` Lo: ${Math.ceil(((data2.list[0].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
+		tLow.textContent = ` Lo: ${Math.ceil(((data2.list[7].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
+		wLow.textContent = ` Lo: ${Math.ceil(((data2.list[15].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
+		thLow.textContent = ` Lo: ${Math.ceil(((data2.list[23].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
+		fLow.textContent = ` Lo: ${Math.ceil(((data2.list[31].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
 
 	} catch(err) {
-		console.error(err);
+		return err;
 	}
 }
 

@@ -1,22 +1,32 @@
-body {
-	
-	background-color: rgb(139, 203, 243); 
+
+#search{
+
+	text-align: center;
 }
 
+#findCity{
+	height: 40px;
+	font-weight: bolder;
+	font-size: 40px;
+}
+
+#button{
+	height: 40px;
+	font-weight: bolder;
+	
+}
 
 #main-info {
 	border: 1px solid black;
 	text-align: center;
 	box-shadow: 10px 5px 5px blue;
-	/* width: 100%; */
 	border-radius: 30px;
-	background-color: white;
+
 }
 
 #temp {
 	font-weight: bold;
 	font-size: 70px;
-
 }
 
 
@@ -26,13 +36,10 @@ body {
 }
 
 .forecast {
-	/* float: left; */
 	border: 5px solid transparent;
 	border-radius: 10%;
-	border-color: rgb(156, 230, 255, .2);
+	padding: 50px;
 	height: 170px;
-	background-color: rgba(34, 120, 233, 0.568);
-
 }
 
 tbody {
@@ -57,6 +64,7 @@ tr{
 	border: 1px solid black;
 	border-radius: 10px;
 	box-shadow: 10px 5px 5px blue;
+	width: 150px;
 }
 
 table{

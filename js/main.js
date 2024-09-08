@@ -4,11 +4,11 @@ const temp = document.getElementById('temp');
 const tempLo = document.getElementById('tempLo');
 const tempHi = document.getElementById('tempHi');
 const weather = document.getElementById('weather');
-const monday = document.querySelector('.monday');
-const tuesday = document.querySelector('.tuesday');
-const wednesday = document.querySelector('.wednesday');
-const thursday = document.querySelector('.thursday');
-const friday = document.querySelector('.friday');;
+const dayOne = document.querySelector('.dayOne');
+const dayTwo = document.querySelector('.dayTwo');
+const dayThree = document.querySelector('.dayThree');
+const dayFour = document.querySelector('.dayFour');
+const dayFive = document.querySelector('.dayFive');;
 const mHigh = document.querySelector('.mHigh');
 const tHigh = document.querySelector('.tHigh');
 const wHigh = document.querySelector('.wHigh');
@@ -29,18 +29,22 @@ async function setDefault() {
 	try {
 		const res = await fetch(url);
 		const data = await res.json();
-
+console.log(data)
+		let image = document.querySelector('.mainWeather');
+		let icon = data.weather[0].icon;
+		let src = `http://openweathermap.org/img/w/${icon}.png`;
 		cityName.textContent = data.name;
 		temp.textContent = Math.ceil(((data.main.temp - 273.15) * 1.8) + 32) + '°';
 		tempHi.textContent = `H:${Math.ceil(((data.main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 		tempLo.textContent = ` L: ${Math.ceil(((data.main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
-		weather.textContent = data.weather[0].main;
+		weather.textContent = data.weather[0].description;
+		image.src = src;
 
 	} catch(err) {
-		console.error(err);
+		return err;
 	}
 }
-// setDefault();
+setDefault();
 
 async function fiveDay() {
 
@@ -66,12 +70,28 @@ async function fiveDay() {
 		const day5 = fri.getDay();
 		const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+		const icon1 = data.list[0].weather[0].icon;
+		const icon2 = data.list[7].weather[0].icon;
+		const icon3 = data.list[15].weather[0].icon;
+		const icon4 = data.list[23].weather[0].icon;
+		const icon5 = data.list[31].weather[0].icon;
+		const iconSrc1 = `http://openweathermap.org/img/w/${icon1}.png`;
+		const iconSrc2 = `http://openweathermap.org/img/w/${icon2}.png`;
+		const iconSrc3 = `http://openweathermap.org/img/w/${icon3}.png`;
+		const iconSrc4 = `http://openweathermap.org/img/w/${icon4}.png`;
+		const iconSrc5 = `http://openweathermap.org/img/w/${icon5}.png`;
 
-		monday.textContent = days[day1];
-		tuesday.textContent = days[day2];
-		wednesday.textContent = days[day3];
-		thursday.textContent = days[day4];
-		friday.textContent = days[day5];
+		document.querySelector('.dayOneIcon').src = iconSrc1;
+		document.querySelector('.dayTwoIcon').src = iconSrc2;
+		document.querySelector('.dayThreeIcon').src = iconSrc3;
+		document.querySelector('.dayFourIcon').src = iconSrc4;
+		document.querySelector('.dayFiveIcon').src = iconSrc5;
+		dayOne.textContent = days[day1];
+		dayTwo.textContent = days[day2];
+		dayThree.textContent = days[day3];
+		dayFour.textContent = days[day4];
+		dayFive.textContent = days[day5];
+
 
 		mHigh.textContent = ` Hi: ${Math.ceil(((data.list[0].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 		tHigh.textContent = ` Hi: ${Math.ceil(((data.list[7].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
@@ -90,7 +110,7 @@ async function fiveDay() {
 		return err;
 	}
 }
-// fiveDay();
+fiveDay();
 
 async function getWeather() {
 
@@ -109,14 +129,14 @@ async function getWeather() {
 		const data = await res.json();
 		const data2 = await res2.json();
 
-		console.log(data);
-		console.log('data2:', data2)
 		cityName.textContent = data.name;
 		temp.textContent = Math.ceil(((data.main.temp - 273.15) * 1.8) + 32) + '°';
 		tempHi.textContent = `H:${Math.ceil(((data.main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 		tempLo.textContent = ` L: ${Math.ceil(((data.main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
 		weather.textContent = data.weather[0].main;
-
+		const icon = data.weather[0].icon;
+		const src = `http://openweathermap.org/img/w/${icon}.png`;
+		document.querySelector('.mainWeather').src = src;
 
 		const mon = new Date(data2.list[0].dt_txt);
 		const tues = new Date(data2.list[7].dt_txt);
@@ -130,25 +150,34 @@ async function getWeather() {
 		const day5 = fri.getDay();
 		const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+		const icon1 = data2.list[0].weather[0].icon;
+		const icon2 = data2.list[7].weather[0].icon;
+		const icon3 = data2.list[15].weather[0].icon;
+		const icon4 = data2.list[23].weather[0].icon;
+		const icon5 = data2.list[31].weather[0].icon;
+		const iconSrc1 = `http://openweathermap.org/img/w/${icon1}.png`;
+		const iconSrc2 = `http://openweathermap.org/img/w/${icon2}.png`;
+		const iconSrc3 = `http://openweathermap.org/img/w/${icon3}.png`;
+		const iconSrc4 = `http://openweathermap.org/img/w/${icon4}.png`;
+		const iconSrc5 = `http://openweathermap.org/img/w/${icon5}.png`;
 
-		monday.textContent = days[day1];
-		tuesday.textContent = days[day2];
-		wednesday.textContent = days[day3];
-		thursday.textContent = days[day4];
-		friday.textContent = days[day5];
+		document.querySelector('.dayOneIcon').src = iconSrc1;
+		document.querySelector('.dayTwoIcon').src = iconSrc2;
+		document.querySelector('.dayThreeIcon').src = iconSrc3;
+		document.querySelector('.dayFourIcon').src = iconSrc4;
+		document.querySelector('.dayFiveIcon').src = iconSrc5;
+
+		dayOne.textContent = days[day1];
+		dayTwo.textContent = days[day2];
+		dayThree.textContent = days[day3];
+		dayFour.textContent = days[day4];
+		dayFive.textContent = days[day5];
 
 		mHigh.textContent = ` Hi: ${Math.ceil(((data2.list[0].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 		tHigh.textContent = ` Hi: ${Math.ceil(((data2.list[7].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 		wHigh.textContent = ` Hi: ${Math.ceil(((data2.list[15].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 		thHigh.textContent = ` Hi: ${Math.ceil(((data2.list[23].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 		fHigh.textContent = ` Hi: ${Math.ceil(((data2.list[31].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
-
-		document.querySelector('.mWeather').textContent = data2.list[0].weather[0].description;
-		document.querySelector('.tWeather').textContent = data2.list[7].weather[0].description;
-		document.querySelector('.wWeather').textContent = data2.list[15].weather[0].description;
-		document.querySelector('.thWeather').textContent = data2.list[23].weather[0].description;
-		document.querySelector('.fWeather').textContent = data2.list[31].weather[0].description;
-		
 
 		mLow.textContent = ` Lo: ${Math.ceil(((data2.list[0].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
 		tLow.textContent = ` Lo: ${Math.ceil(((data2.list[7].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;

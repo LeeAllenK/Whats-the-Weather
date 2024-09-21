@@ -1,5 +1,6 @@
 const searchButton = document.getElementById('button');
 const cityName = document.getElementById('cityName');
+const findCity = document.getElementById('findCity');
 const temp = document.getElementById('temp');
 const tempLo = document.getElementById('tempLo');
 const tempHi = document.getElementById('tempHi');
@@ -21,6 +22,7 @@ const thLow = document.querySelector('.thLow');
 const fLow = document.querySelector('.fLow');
 
 searchButton.addEventListener('click', getWeather);
+findCity.addEventListener('click' , (e) => findCity.classList.toggle('blue'));
 
 async function setDefault() {
 	const apiKey = 'b8bd1d08aa24f089a65f8c6f4b056564';
@@ -44,7 +46,7 @@ console.log(data)
 		return err;
 	}
 }
-setDefault();
+// setDefault();
 
 async function fiveDay() {
 
@@ -52,7 +54,7 @@ async function fiveDay() {
 
 	const apiKey = 'b8bd1d08aa24f089a65f8c6f4b056564';
 	const url = `https://api.openweathermap.org/data/2.5/forecast?q=milton&appid=${apiKey}`;
-	console.log(city)
+
 	try {
 
 		const res = await fetch(url);
@@ -110,7 +112,7 @@ async function fiveDay() {
 		return err;
 	}
 }
-fiveDay();
+// fiveDay();
 
 async function getWeather() {
 
@@ -123,7 +125,6 @@ async function getWeather() {
 
 	try {
 		const res = await fetch(url);
-
 		const res2 = await fetch(url2);
 
 		const data = await res.json();

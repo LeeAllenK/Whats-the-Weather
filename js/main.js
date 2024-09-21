@@ -24,9 +24,8 @@ const magnify = document.querySelector('.fa-search');
 
 searchButton.addEventListener('click', getWeather);
 findCity.addEventListener('click' , (e) => {
-	// findCity.classList.toggle('blue');
+	findCity.classList.toggle('blue');
 	magnify.classList.toggle('blue');
-	searchButton.classList.toggle('blue');
 });
 
 async function setDefault() {
@@ -106,7 +105,7 @@ async function fiveDay() {
 		thHigh.textContent = ` Hi: ${Math.ceil(((data.list[23].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 		fHigh.textContent = ` Hi: ${Math.ceil(((data.list[31].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 
-		mLow.textContent = ` Lo: ${Math.ceil(((data.list[0].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
+		mLow.textContent = ` Lo: ${Math.ceil(((data.list[0].main.temp_min - 273.15) * 1.8) + 32 -12) + '°'} `;
 		tLow.textContent = ` Lo: ${Math.ceil(((data.list[7].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
 		wLow.textContent = ` Lo: ${Math.ceil(((data.list[15].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
 		thLow.textContent = ` Lo: ${Math.ceil(((data.list[23].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;

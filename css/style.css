@@ -1,5 +1,8 @@
 body{
 	background-color: blue;
+	font-family: "Playpen Sans", cursive;
+		font-optical-sizing: auto;
+		font-weight: 800;
 }
 .fa-search{
 	border: 3px solid black;
@@ -28,7 +31,7 @@ body{
 	border-left: none;
 	height: 40px;
 	font-weight: bolder;
-	font-size: 40px;
+	font-size: 32px;
 }
 :hover > #findCity{
 	background-color: lightskyblue;
@@ -38,12 +41,14 @@ body{
 
 #button{
 	border-radius: 10px;
-	font-family: serif;
-	font-size: 30px;
+	font-family: "Playpen Sans", cursive;
+	font-optical-sizing: auto;
 	font-weight: bolder;
+	font-style: normal;
+	font-size: 20px;
 	cursor: pointer;
 }
-:hover > #button{
+ #button:hover{
 	background-color: lightskyblue;
 	transform: scale(1.2);
 }

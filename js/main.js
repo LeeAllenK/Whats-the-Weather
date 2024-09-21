@@ -20,9 +20,14 @@ const tLow = document.querySelector('.tLow');
 const wLow = document.querySelector('.wLow');
 const thLow = document.querySelector('.thLow');
 const fLow = document.querySelector('.fLow');
+const magnify = document.querySelector('.fa-search');
 
 searchButton.addEventListener('click', getWeather);
-findCity.addEventListener('click' , (e) => findCity.classList.toggle('blue'));
+findCity.addEventListener('click' , (e) => {
+	// findCity.classList.toggle('blue');
+	magnify.classList.toggle('blue');
+	searchButton.classList.toggle('blue');
+});
 
 async function setDefault() {
 	const apiKey = 'b8bd1d08aa24f089a65f8c6f4b056564';

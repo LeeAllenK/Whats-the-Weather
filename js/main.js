@@ -31,11 +31,11 @@ findCity.addEventListener('click' , (e) => {
 if('geolocation' in navigator) {
 	navigator.geolocation.getCurrentPosition(setDefault, error);
 } else {
-	alert('Geolocation is not available');
+	alert('Location not available');
 }
 
 function error(){
-	alert('Unable to retrieve your location');
+	alert(`ERROR LOCATION CAN'T BE DETERMINED TRY AGAIN`);
 }
 
 async function setDefault() {

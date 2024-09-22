@@ -28,6 +28,16 @@ findCity.addEventListener('click' , (e) => {
 	magnify.classList.toggle('blue');
 });
 
+if('geolocation' in navigator) {
+	navigator.geolocation.getCurrentPosition(setDefault, error);
+} else {
+	alert('Geolocation is not available');
+}
+
+function error(){
+	alert('Unable to retrieve your location');
+}
+
 async function setDefault() {
 	const apiKey = 'b8bd1d08aa24f089a65f8c6f4b056564';
 	const url = `https://api.openweathermap.org/data/2.5/weather?q=milton&appid=${apiKey}`;
@@ -35,22 +45,22 @@ async function setDefault() {
 	try {
 		const res = await fetch(url);
 		const data = await res.json();
-console.log(data)
+
 		let image = document.querySelector('.mainWeather');
 		let icon = data.weather[0].icon;
 		let src = `http://openweathermap.org/img/w/${icon}.png`;
 		cityName.textContent = data.name;
-		temp.textContent = Math.ceil(((data.main.temp - 273.15) * 1.8) + 32) + '°';
+		temp.textContent = Math.ceil(((data.main.temp - 273.15) * 1.8) + 32 ) + '°';
 		tempHi.textContent = `H:${Math.ceil(((data.main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
-		tempLo.textContent = ` L: ${Math.ceil(((data.main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
+		tempLo.textContent = ` L: ${Math.ceil(((data.main.temp_min - 273.15) * 1.8) + 32 - 12) + '°'}`;
 		weather.textContent = data.weather[0].description;
 		image.src = src;
-
+		document.querySelector('.d3').textContent = `H:${Math.ceil(((data.main.temp_max - 273.15) * 1.8) + 32) + '°'} L: ${Math.ceil(((data.main.temp_min - 273.15) * 1.8) + 32 - 12) + '°'}`; s
+		document.getElementById('D2').src = src;
 	} catch(err) {
 		return err;
 	}
 }
-// setDefault();
 
 async function fiveDay() {
 
@@ -60,22 +70,20 @@ async function fiveDay() {
 	const url = `https://api.openweathermap.org/data/2.5/forecast?q=milton&appid=${apiKey}`;
 
 	try {
-
 		const res = await fetch(url);
 		const data = await res.json();
 
 		const mon = new Date(data.list[0].dt_txt);
-		const tues = new Date(data.list[7].dt_txt);
-		const wed = new Date(data.list[15].dt_txt);
-		const thurs = new Date(data.list[23].dt_txt);
-		const fri = new Date(data.list[31].dt_txt);
+		const tues = new Date(data.list[8].dt_txt);
+		const wed = new Date(data.list[16].dt_txt);
+		const thurs = new Date(data.list[24].dt_txt);
+		const fri = new Date(data.list[32].dt_txt);
 		const day1 = mon.getDay();
 		const day2 = tues.getDay();
 		const day3 = wed.getDay();
 		const day4 = thurs.getDay();
 		const day5 = fri.getDay();
 		const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
 		const icon1 = data.list[0].weather[0].icon;
 		const icon2 = data.list[7].weather[0].icon;
 		const icon3 = data.list[15].weather[0].icon;
@@ -98,7 +106,6 @@ async function fiveDay() {
 		dayFour.textContent = days[day4];
 		dayFive.textContent = days[day5];
 
-
 		mHigh.textContent = ` Hi: ${Math.ceil(((data.list[0].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 		tHigh.textContent = ` Hi: ${Math.ceil(((data.list[7].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 		wHigh.textContent = ` Hi: ${Math.ceil(((data.list[15].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
@@ -106,17 +113,15 @@ async function fiveDay() {
 		fHigh.textContent = ` Hi: ${Math.ceil(((data.list[31].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 
 		mLow.textContent = ` Lo: ${Math.ceil(((data.list[0].main.temp_min - 273.15) * 1.8) + 32 -12) + '°'} `;
-		tLow.textContent = ` Lo: ${Math.ceil(((data.list[7].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
-		wLow.textContent = ` Lo: ${Math.ceil(((data.list[15].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
-		thLow.textContent = ` Lo: ${Math.ceil(((data.list[23].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
-		fLow.textContent = ` Lo: ${Math.ceil(((data.list[31].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
-
-
+		tLow.textContent = ` Lo: ${Math.ceil(((data.list[7].main.temp_min - 273.15) * 1.8) + 32 - 12) + '°'}`;
+		wLow.textContent = ` Lo: ${Math.ceil(((data.list[15].main.temp_min - 273.15) * 1.8) + 32 - 12) + '°'}`;
+		thLow.textContent = ` Lo: ${Math.ceil(((data.list[23].main.temp_min - 273.15) * 1.8) + 32 - 12) + '°'}`;
+		fLow.textContent = ` Lo: ${Math.ceil(((data.list[31].main.temp_min - 273.15) * 1.8) + 32 - 12) + '°'}`;
 	} catch(err) {
 		return err;
 	}
 }
-// fiveDay();
+fiveDay();
 
 async function getWeather() {
 
@@ -143,11 +148,11 @@ async function getWeather() {
 		const src = `http://openweathermap.org/img/w/${icon}.png`;
 		document.querySelector('.mainWeather').src = src;
 
-		const mon = new Date(data2.list[0].dt_txt);
-		const tues = new Date(data2.list[7].dt_txt);
-		const wed = new Date(data2.list[15].dt_txt);
-		const thurs = new Date(data2.list[23].dt_txt);
-		const fri = new Date(data2.list[31].dt_txt);
+		const mon = new Date(data.list[0].dt_txt);
+		const tues = new Date(data.list[8].dt_txt);
+		const wed = new Date(data.list[16].dt_txt);
+		const thurs = new Date(data.list[24].dt_txt);
+		const fri = new Date(data.list[32].dt_txt);
 		const day1 = mon.getDay();
 		const day2 = tues.getDay();
 		const day3 = wed.getDay();
@@ -184,11 +189,11 @@ async function getWeather() {
 		thHigh.textContent = ` Hi: ${Math.ceil(((data2.list[23].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 		fHigh.textContent = ` Hi: ${Math.ceil(((data2.list[31].main.temp_max - 273.15) * 1.8) + 32) + '°'}`;
 
-		mLow.textContent = ` Lo: ${Math.ceil(((data2.list[0].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
-		tLow.textContent = ` Lo: ${Math.ceil(((data2.list[7].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
-		wLow.textContent = ` Lo: ${Math.ceil(((data2.list[15].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
-		thLow.textContent = ` Lo: ${Math.ceil(((data2.list[23].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
-		fLow.textContent = ` Lo: ${Math.ceil(((data2.list[31].main.temp_min - 273.15) * 1.8) + 32) + '°'}`;
+		mLow.textContent = ` Lo: ${Math.ceil(((data2.list[0].main.temp_min - 273.15) * 1.8) + 32 - 12) + '°'}`;
+		tLow.textContent = ` Lo: ${Math.ceil(((data2.list[7].main.temp_min - 273.15) * 1.8) + 32- 12) + '°'}`;
+		wLow.textContent = ` Lo: ${Math.ceil(((data2.list[15].main.temp_min - 273.15) * 1.8) + 32 - 12) + '°'}`;
+		thLow.textContent = ` Lo: ${Math.ceil(((data2.list[23].main.temp_min - 273.15) * 1.8) + - 12) + '°'}`;
+		fLow.textContent = ` Lo: ${Math.ceil(((data2.list[31].main.temp_min - 273.15) * 1.8) + 32 - 12) + '°'}`;
 
 	} catch(err) {
 		return err;

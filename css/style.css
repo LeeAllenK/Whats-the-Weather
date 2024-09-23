@@ -1,9 +1,19 @@
 body{
-	background-color: blue;
-	font-family: "Playpen Sans", cursive;
+		font-family: "Playpen Sans", cursive;
 		font-optical-sizing: auto;
 		font-weight: 800;
 }
+#main-info{
+	border: 1px solid black;
+	text-align: center;
+	box-shadow: 10px 5px 5px blue;
+	border-radius: 30px;
+}
+p{
+	font-size: 30px;
+
+}
+
 .fa-search{
 	border: 3px solid black;
 	border-radius: 10px 0px 0px 10px;
@@ -65,12 +75,6 @@ li{
 	justify-content: center;
 }
 
-#main-info{
-	border: 1px solid black;
-	text-align: center;
-	box-shadow: 10px 5px 5px blue;
-	border-radius: 30px;
-}
 
 #temp{
 	font-weight: bold;
@@ -94,6 +98,7 @@ thead:hover{
 tbody{
 	 display: flex; 
 	flex-direction: row;
+
 	font-size: 30px;
 	font-weight: 1000;
 }
@@ -114,6 +119,7 @@ tr{
 	border-radius: 10px;
 	box-shadow: 10px 5px 5px blue;
 	width: 200px;
+	text-align: center;
 }
 
 table{
@@ -124,17 +130,8 @@ table{
 th{
 	border-bottom: dotted;
 }
-.d1{
+
+.d1 , .d2 ,.d3{
 	font-size: 20px;
-	text-align: center;
-}
-
-.d2{
-		font-size: 20px;
-	text-align: center;
-}
-
-.d3{
-		font-size: 20px;
 	text-align: center;
 }

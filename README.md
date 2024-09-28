@@ -5,7 +5,7 @@ Weather application that displays users searched and or local weather 5-day fore
 
 <div id="header" >
  <h1 class="heading-element" dir="auto">How It's Made:</h1>
- Tech used: HTML, CSS, JavaScript<br/>
+ Tech used: HTML, CSS, JavaScript<br/><br/>
  This user friendly weather application has a simple design to better display the user's weather forecast. Using Javascript fetch() API I was able to access data from openweather API which is on display in this beautifully built UI. The focus was to accessing data from the API and using that to display users weather forecast based on their exact position using javasript's geolocation.
 </div>
 

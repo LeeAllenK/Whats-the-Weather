@@ -92,17 +92,18 @@ li{
 }
 thead:hover{
 	transform: scale(1.1);
+	cursor:pointer;
 }
 tbody{
 	 display: flex; 
 	flex-direction: row;
-
 	font-size: 30px;
 	font-weight: 1000;
 }
 
 tbody:hover{
 	transform: scale(1.1);
+	cursor:pointer
 }
 .row-head{
 	display: flex;

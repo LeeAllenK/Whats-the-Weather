@@ -29,7 +29,7 @@ findCity.addEventListener('click' , (e) => {
 });
 
 if('geolocation' in navigator) {
-	navigator.geolocation.getCurrentPosition(myLocation, error);
+	navigator.geolocation.getCurrentPosition(myLocation, Showerror);
 } else {
 	alert('Location not available');
 }
@@ -63,10 +63,11 @@ async function myLocation(pos) {
 }
 
 if('geolocation' in navigator) {
-	navigator.geolocation.getCurrentPosition(getForecast, error);
+	navigator.geolocation.getCurrentPosition(getForecast, Showerror);
 } else {
 	alert('Location not available');
 }
+
 async function getForecast(pos) {
 
 	const lat = pos.coords.latitude;
@@ -201,6 +202,6 @@ async function getWeather() {
 	}
 }
 
-function error(){
-	alert(`ERROR LOCATION CAN'T BE DETERMINED TRY AGAIN`);
+function Showerror(){
+	alert(`ERROR LOCATION CAN'T BE DETERMINED`);
 }

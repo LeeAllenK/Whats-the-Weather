@@ -1,6 +1,6 @@
 <div id="header" >
  <h1  class="heading-element" dir="auto">What's The Weather</h1>
- <img src="https://i.imgur.com/35tq07Z.gif" alt="gif not available">
+ <img src="https://i.imgur.com/F2Tzsxu.gif" alt="gif not available">
 Weather application that displays users searched and or local weather 5-day forecast.
 </div>
 
